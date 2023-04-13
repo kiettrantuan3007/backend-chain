@@ -26,7 +26,6 @@ class Map:
         self.input = [inputDirectionBot1, inputDirectionBot2]
 
     def update_metadata(self):
-        self.setAllBotStop()
         orderUpdate = sorted(self.input, key=lambda x : float(x[1]))
         print(orderUpdate)
 
@@ -140,7 +139,11 @@ class Map:
         self.screen = False
     def readScreen(self):
         return self.screen
-
+    def check_all_bots_stopped(self):
+            for bot in self.bots:
+                if bot['status'] != 'stop':
+                    return False
+            return True
     def printMapJSONAsDict(self):
         print(self.getMapJSONAsDict())
 def getPathInp_Out():
@@ -160,7 +163,7 @@ def update():
         myMap = None
         myMap = Map(path['input'][0], path['input'][1], path['output'])
         # print(myMap.readScreen())
-        if myMap.readScreen() == True:
+        if myMap.readScreen() == True and myMap.check_all_bots_stopped()==True:
             myMap.printMapJSONAsDict()
             myMap.update_metadata()
             myMap.writeMapAsJSON('maze_metadata.json')
