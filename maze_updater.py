@@ -18,12 +18,13 @@ class Map:
             print("MAY BE SOMETHING NOT TRUE...")
             time.sleep(0.01)
             self.loadJson()
-
-        inputDirectionBot1 = self.getInput(self.pathInputBot1)[0].strip().split(" ")
-        inputDirectionBot1.append(nameBot1)
-        inputDirectionBot2 = self.getInput(self.pathInputBot2)[0].strip().split(" ")
-        inputDirectionBot2.append(nameBot2)
-        self.input = [inputDirectionBot1, inputDirectionBot2]
+        if (self.getInput(self.pathInputBot1)!=[] or self.getInput(self.pathInputBot2)!=[]): 
+            inputDirectionBot1 = self.getInput(self.pathInputBot1)[-1].strip().split(" ")
+            inputDirectionBot2 = self.getInput(self.pathInputBot2)[-1].strip().split(" ")
+            inputDirectionBot1.append(nameBot1)
+            inputDirectionBot2.append(nameBot2)
+            self.input = [inputDirectionBot1, inputDirectionBot2]
+        
 
     def update_metadata(self):
         orderUpdate = sorted(self.input, key=lambda x : float(x[1]))

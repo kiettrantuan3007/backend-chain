@@ -1,0 +1,1 @@
+{"width": 10, "height": 10, "obstacles": [[5, 5], [6, 5], [5, 4], [5, 6], [4, 5]], "bots": [{"name": "tadao", "pos": [1, 1], "status": "stop", "score": 10}, {"name": "top", "pos": [5, 7], "status": "stop", "score": 4}], "coin": [5, 8], "screen": true}
